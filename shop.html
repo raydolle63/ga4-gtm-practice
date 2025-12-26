@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fake Shop</title>
+
+  <!-- GTM HEAD SNIPPET GOES HERE -->
+</head>
+<body>
+  <!-- GTM BODY SNIPPET GOES HERE -->
+
+  <h1>Fake Shop</h1>
+
+  <p>Product: Training Widget</p>
+  <p>Price: 49.00 CHF</p>
+
+  <button id="addToCart">Add to Cart</button>
+  <button id="purchase">Purchase</button>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    const item = {
+      item_id: "sku_widget_001",
+      item_name: "Training Widget",
+      price: 49.00,
+      quantity: 1
+    };
+
+    // simulate a product view event on page load
+    window.dataLayer.push({
+      event: "view_item_custom",
+      currency: "CHF",
+      value: 49.00,
+      items: [item]
+    });
+
+    document.getElementById("addToCart").addEventListener("click", function () {
+      window.dataLayer.push({
+        event: "add_to_cart_custom",
+        currency: "CHF",
+        value: 49.00,
+        items: [item]
+      });
+      alert("Add to cart event pushed.");
+    });
+
+    document.getElementById("purchase").addEventListener("click", function () {
+      window.dataLayer.push({
+        event: "purchase_custom",
+        transaction_id: "test_" + Math.floor(Math.random() * 1000000),
+        currency: "CHF",
+        value: 49.00,
+        items: [item]
+      });
+      alert("Purchase event pushed.");
+    });
+  </script>
+</body>
+</html>
