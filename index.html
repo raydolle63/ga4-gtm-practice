@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GA4 + GTM Practice</title>
+
+  <!-- GTM HEAD SNIPPET GOES HERE -->
+</head>
+<body>
+  <!-- GTM BODY SNIPPET GOES HERE -->
+
+  <h1>GA4 + GTM Practice</h1>
+  <p>Use this site to practice tracking.</p>
+
+  <button id="cta">CTA Button</button>
+
+  <p><a href="lead.html">Go to Lead Page</a></p>
+  <p><a href="shop.html">Go to Shop Page</a></p>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    document.getElementById("cta").addEventListener("click", function () {
+      window.dataLayer.push({
+        event: "cta_click",
+        cta_name: "home_primary_cta"
+      });
+      alert("CTA clicked. Event pushed.");
+    });
+  </script>
+</body>
+</html>
